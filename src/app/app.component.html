@@ -1,76 +1,87 @@
-<div *ngIf="currentState == states.LOADING">
-	Please wait..
-</div>
+<section role="region" class="dashboard">
+	<div *ngIf="currentState == states.LOADING">
+		Please wait..
+	</div>
+	<div *ngIf="currentState == states.ERROR">
+		ERROR {{errorMessage | json}}
+	</div>
 
-<div *ngIf="currentState == states.ERROR">
-	ERROR {{errorMessage | json}}
-</div>
+	<nav role="navigation">
+		<app-nav></app-nav>
+	</nav>
 
-<app-nav></app-nav>
+	<section role="region">
+		<div class="text-center mt-4" *ngIf="data">
+			<h2>{{data.station.name}}</h2>
+		</div>
+	</section>
+
+	<main role="main">
+		<div class="container mt-4 mb-4" *ngIf="currentState == states.READY">
+			<div class="card-deck text-center">
+				<div class="card border">
+					<div class="card-header">
+						<h4>Temperature</h4><i class="card-icon fas fa-temperature-low"></i>
+					</div>
+					<div class="my-auto" *ngIf="currentConditionMap['Temperature']">
+						<h1>{{currentConditionMap['Temperature'].reading | json}} °F</h1>
+						<h4>Currently</h4>
+					</div>
+					<div class="text-right mr-1"><i routerLink="/" onClick="alert('This could expand for historical data and more.')" class="fas fa-expand"></i></div>
+				</div>
+				<div class="card border">
+					<div class="card-header">
+						<h4>Humidity</h4><i class="card-icon fas fa-percent"></i>
+					</div>
+					<div class="my-auto" *ngIf="currentConditionMap['Humidity']">
+						<h1>{{currentConditionMap['Humidity'].reading | json}} %</h1>
+					</div>
+					<div class="text-right mr-1"><i routerLink="/" onClick="alert('This could expand for historical data and more.')" class="fas fa-expand"></i></div>
+				</div>
+				<div class="card border">
+					<div class="card-header">
+						<h4>Wind Speed</h4><i class="card-icon fas fa-wind"></i>
+					</div>
+					<div class="my-auto" *ngIf="currentConditionMap['Wind Speed']">
+						<h1>{{currentConditionMap['Wind Speed'].reading | json}} mph</h1>
+						<h4>{{currentConditionMap['Wind Speed (min)'].reading | json}} - {{currentConditionMap['Wind Speed (max)'].reading | json}} mph </h4>
+					</div>
+					<div class="text-right mr-1"><i routerLink="/" onClick="alert('This could expand for historical data and more.')" class="fas fa-expand"></i></div>
+				</div>
+			</div>
+			<div class="card-deck text-center mt-4">
+				<div class="card border">
+					<div class="card-header">
+						<h4>Dew Point</h4><i class="card-icon fas fa-tint"></i>
+					</div>
+					<div class="my-auto" *ngIf="currentConditionMap['Dew Point']">
+						<h1>{{currentConditionMap['Dew Point'].reading | json}} °F</h1>
+					</div>
+					<div class="text-right mr-1"><i routerLink="/" onClick="alert('This could expand for historical data and more.')" class="fas fa-expand"></i></div>
+				</div>
+				<div class="card border">
+					<div class="card-header">
+						<h4>Heat Index</h4><i class="card-icon fas fa-temperature-high"></i>
+					</div>
+					<div class="my-auto" *ngIf="currentConditionMap['Heat Index']">
+						<h1>{{currentConditionMap['Heat Index'].reading | json}} °F</h1>
+					</div>
+					<div class="text-right mr-1"><i routerLink="/" onClick="alert('This could expand for historical data and more.')" class="fas fa-expand"></i></div>
+				</div>
+				<div class="card border">
+					<div class="card-header">
+						<h4>Pressure</h4><i class="card-icon fas fa-thermometer-full"></i>
+					</div>
+					<div class="my-auto" *ngIf="currentConditionMap['Pressure']">
+						<h1>{{currentConditionMap['Pressure'].reading | json}} inHg</h1>
+					</div>
+					<div class="text-right mr-1"><i routerLink="/" onClick="alert('This could expand for historical data and more.')" class="fas fa-expand"></i></div>
+				</div>
+			</div>
+		</div>
+	</main>
+</section>
 
 <div class="text-center mt-4" *ngIf="data">
-	<h2>{{data.station.name}}</h2>
-</div>
-
-<div class="container mt-4" *ngIf="currentState == states.READY">
-	<div class="card-deck text-center">
-		<div class="card border">
-			<div class="card-header bg-dark text-light">
-				<h4>Temperature</h4><i class="fas fa-temperature-low"></i>
-			</div>
-			<div class="my-auto" *ngIf="currentConditionMap['Temperature']">
-				<h1>{{currentConditionMap['Temperature'].reading | json}} °F</h1>
-				<h4>Currently</h4>
-			</div>
-		</div>
-		<div class="card border">
-			<div class="card-header bg-dark text-light">
-				<h4>Humidity</h4><i class="fas fa-percent"></i>
-			</div>
-			<div class="my-auto" *ngIf="currentConditionMap['Humidity']">
-				<h1>{{currentConditionMap['Humidity'].reading | json}} %</h1>
-			</div>
-		</div>
-		<div class="card border">
-			<div class="card-header bg-dark text-light">
-				<h4>Wind Speed</h4><i class="fas fa-wind"></i>
-			</div>
-			<div class="my-auto" *ngIf="currentConditionMap['Wind Speed']">
-				<h1>{{currentConditionMap['Wind Speed'].reading | json}} mph</h1>
-				<h4>{{currentConditionMap['Wind Speed (min)'].reading | json}} - {{currentConditionMap['Wind Speed (max)'].reading | json}} mph </h4>
-			</div>
-		</div>
-	</div>
-	<div class="card-deck text-center mt-4">
-		<div class="card border">
-			<div class="card-header bg-dark text-light">
-				<h4>Dew Point</h4><i class="fas fa-tint"></i>
-			</div>
-			<div class="my-auto" *ngIf="currentConditionMap['Dew Point']">
-				<h1>{{currentConditionMap['Dew Point'].reading | json}} °F</h1>
-			</div>
-		</div>
-		<div class="card border">
-			<div class="card-header bg-dark text-light">
-				<h4>Heat Index</h4><i class="fas fa-temperature-high"></i>
-			</div>
-			<div class="my-auto" *ngIf="currentConditionMap['Heat Index']">
-				<h1>{{currentConditionMap['Heat Index'].reading | json}} °F</h1>
-			</div>
-		</div>
-		<div class="card border">
-			<div class="card-header bg-dark text-light">
-				<h4>Pressure</h4><i class="fas fa-thermometer-full"></i>
-			</div>
-			<div class="my-auto" *ngIf="currentConditionMap['Pressure']">
-				<h1>{{currentConditionMap['Pressure'].reading | json}} inHg</h1>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="text-center mt-4" *ngIf="data">
-	<h2>Location</h2>
-	<h4>Latitude: {{data.station.lat}}</h4>
-	<h4>Longitude: {{data.station.lng}}</h4>
+	<h4>As of: {{data.station.last_reading | amLocale:'en' | amDateFormat:'MMMM Do YYYY, h:mm:ss A'}}</h4>
 </div>

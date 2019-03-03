@@ -1,4 +1,12 @@
+// .dashboard {
+//     background-color: rgb(85, 202, 238);
+// }
 .card {
     height: 300px;
     min-width: 210px;
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.card-icon {
+    font-size: 25px;
 }
