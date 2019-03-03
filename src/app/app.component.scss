@@ -2,10 +2,18 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+.station-name {
+    font-family: 'Oswald', sans-serif;
+}
+
 .card {
     height: 300px;
     min-width: 210px;
     box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.card-header {
+    background-color: rgb(216, 236, 217);
 }
 
 .card-title {
@@ -28,7 +36,6 @@
 
 agm-map {
     height: 350px;
-    // width: 500px;
 }
 
 .g-map {

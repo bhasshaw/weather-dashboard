@@ -11,15 +11,23 @@
 
 	<section role="region">
 		<div class="text-center mt-4" *ngIf="data">
-			<h2>{{data.station.name}}</h2>
+			<h2 class="station-name">{{data.station.name}}</h2>
 		</div>
 		<div class="text-center mt-4 mb-4" *ngIf="data">
 			<h5>As of: {{data.station.last_reading | amLocale:'en' | amDateFormat:'MMMM Do YYYY, h:mm A'}}</h5>
 		</div>
 	</section>
 
+	<section role="region">
+		<div class="g-map mt-4 mx-4">
+			<agm-map [zoom]="zoom" [latitude]="lat" [longitude]="lng">
+				<agm-marker [latitude]="data.station.lat" [longitude]="data.station.lng"></agm-marker>
+			</agm-map>
+		</div>
+	</section>
+
 	<main role="main">
-		<div class="container">
+		<div class="container mb-4">
 			<div class="card-deck text-center">
 				<div class="card border mt-4">
 					<div class="card-header">
@@ -101,13 +109,5 @@
 			</div>
 		</div>
 	</main>
-
-	<section role="region">
-		<div class="g-map my-4 mx-4">
-			<agm-map [zoom]="zoom" [latitude]="lat" [longitude]="lng">
-				<agm-marker [latitude]="data.station.lat" [longitude]="data.station.lng"></agm-marker>
-			</agm-map>
-		</div>
-	</section>
 
 </section>
