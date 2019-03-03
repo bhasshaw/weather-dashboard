@@ -13,14 +13,17 @@
 		<div class="text-center mt-4" *ngIf="data">
 			<h2>{{data.station.name}}</h2>
 		</div>
+		<div class="text-center mt-4 mb-4" *ngIf="data">
+			<h5>As of: {{data.station.last_reading | amLocale:'en' | amDateFormat:'MMMM Do YYYY, h:mm A'}}</h5>
+		</div>
 	</section>
 
 	<main role="main">
-		<div class="container mt-4">
+		<div class="container">
 			<div class="card-deck text-center">
-				<div class="card border">
+				<div class="card border mt-4">
 					<div class="card-header">
-						<h4>Temperature</h4>
+						<h4 class="card-title">Temperature</h4>
 						<i class="card-icon fas fa-temperature-low"></i>
 					</div>
 					<div class="my-auto" *ngIf="currentConditionMap['Temperature']">
@@ -31,9 +34,9 @@
 						<i routerLink="/" onClick="alert('This could expand for historical data and more.')" class="fas fa-expand card-expand"></i>
 					</div>
 				</div>
-				<div class="card border">
+				<div class="card border mt-4">
 					<div class="card-header">
-						<h4>Humidity</h4>
+						<h4 class="card-title">Humidity</h4>
 						<i class="card-icon fas fa-percent"></i>
 					</div>
 					<div class="my-auto" *ngIf="currentConditionMap['Humidity']">
@@ -43,9 +46,9 @@
 						<i routerLink="/" onClick="alert('This could expand for historical data and more.')" class="fas fa-expand card-expand"></i>
 					</div>
 				</div>
-				<div class="card border">
+				<div class="card border mt-4">
 					<div class="card-header">
-						<h4>Wind Speed</h4>
+						<h4 class="card-title">Wind Speed</h4>
 						<i class="card-icon fas fa-wind"></i>
 					</div>
 					<div class="my-auto" *ngIf="currentConditionMap['Wind Speed']">
@@ -58,10 +61,10 @@
 					</div>
 				</div>
 			</div>
-			<div class="card-deck text-center mt-4">
-				<div class="card border">
+			<div class="card-deck text-center">
+				<div class="card border mt-4">
 					<div class="card-header">
-						<h4>Dew Point</h4>
+						<h4 class="card-title">Dew Point</h4>
 						<i class="card-icon fas fa-tint"></i>
 					</div>
 					<div class="my-auto" *ngIf="currentConditionMap['Dew Point']">
@@ -71,9 +74,9 @@
 						<i routerLink="/" onClick="alert('This could expand for historical data and more.')" class="fas fa-expand card-expand"></i>
 					</div>
 				</div>
-				<div class="card border">
+				<div class="card border mt-4">
 					<div class="card-header">
-						<h4>Heat Index</h4>
+						<h4 class="card-title">Heat Index</h4>
 						<i class="card-icon fas fa-temperature-high"></i>
 					</div>
 					<div class="my-auto" *ngIf="currentConditionMap['Heat Index']">
@@ -83,9 +86,9 @@
 						<i routerLink="/" onClick="alert('This could expand for historical data and more.')" class="fas fa-expand card-expand"></i>
 					</div>
 				</div>
-				<div class="card border">
+				<div class="card border mt-4">
 					<div class="card-header">
-						<h4>Pressure</h4>
+						<h4 class="card-title">Pressure</h4>
 						<i class="card-icon fas fa-thermometer-full"></i>
 					</div>
 					<div class="my-auto" *ngIf="currentConditionMap['Pressure']">
@@ -99,15 +102,12 @@
 		</div>
 	</main>
 
-	<footer role="contentinfo">
-		<div class="text-center mt-4 mb-4" *ngIf="data">
-			<h5>As of: {{data.station.last_reading | amLocale:'en' | amDateFormat:'MMMM Do YYYY, h:mm:ss A'}}</h5>
+	<section role="region">
+		<div class="g-map my-4 mx-4">
+			<agm-map [latitude]="lat" [longitude]="lng">
+				<agm-marker [latitude]="data.station.lat" [longitude]="data.station.lng"></agm-marker>
+			</agm-map>
 		</div>
-	</footer>
-	<div>
-		<agm-map [latitude]="lat" [longitude]="lng">
-			<agm-marker [latitude]="data.station.lat" [longitude]="data.station.lng"></agm-marker>
-		</agm-map>
-	</div>
+	</section>
 
 </section>

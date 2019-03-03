@@ -8,9 +8,14 @@
     box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
+.card-title {
+    float: left;
+}
+
 .card-icon {
     font-size: 25px;
     color: #008375;
+    float: right;
 }
 
 .card-expand {
@@ -24,4 +29,9 @@
 agm-map {
     height: 350px;
     // width: 500px;
+}
+
+.g-map {
+    border: 1px lightgray solid;
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }

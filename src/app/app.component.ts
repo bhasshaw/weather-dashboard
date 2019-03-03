@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 		'ERROR': 1,
 		'READY': 2,
 	}
-	currentState: number
+	currentState: number;
 	errorMessage: any;
 
 	constructor(private http: HttpClient) {
