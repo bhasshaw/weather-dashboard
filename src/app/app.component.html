@@ -1,0 +1,18 @@
+<div *ngIf="currentState == states.LOADING">
+	Please wait..
+</div>
+
+<div *ngIf="currentState == states.ERROR">
+	ERROR {{errorMessage | json}}
+</div>
+
+<div *ngIf="currentState == states.READY">
+	<div *ngIf="data">
+		<h2>{{data.station.name}}</h2>
+	</div>
+	<div *ngIf="currentConditionMap['Temperature']">
+		{{currentConditionMap['Temperature'].reading | json}} °F
+	</div>
+</div>
+
+
