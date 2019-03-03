@@ -1,6 +1,7 @@
-// .dashboard {
-//     background-color: rgb(85, 202, 238);
-// }
+.dashboard {
+    font-family: 'Open Sans', sans-serif;
+}
+
 .card {
     height: 300px;
     min-width: 210px;
@@ -9,4 +10,18 @@
 
 .card-icon {
     font-size: 25px;
+    color: #008375;
+}
+
+.card-expand {
+    font-size: 25px;
+}
+
+.card-expand:hover {
+    color: #008375;
+}
+
+agm-map {
+    height: 350px;
+    // width: 500px;
 }

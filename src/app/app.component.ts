@@ -31,10 +31,6 @@ export class AppComponent implements OnInit {
 
 			console.log(this.data)
 			console.log(this.currentConditionMap)
-			// console.log(this.data.station.last_reading)
-			// let date = this.data.station.last_reading;
-			// date = date.split(' ')[0];
-			// console.log(date)
 			
 			this.currentState = this.states.READY;
 		}, (error) => {

@@ -6,6 +6,7 @@ import { MomentModule } from 'ngx-moment';
 import { AppComponent } from './app.component';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import { NavComponent } from './nav/nav.component';
+import { AgmCoreModule } from '@agm/core';
 
 
 @NgModule({
@@ -16,7 +17,10 @@ import { NavComponent } from './nav/nav.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    MomentModule
+    MomentModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyD0HSUs9Z6phluKNemOU6g_g_qrKPwuUtA'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
