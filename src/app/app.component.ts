@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
 	}
 	currentState: number;
 	errorMessage: any;
+	zoom: number = 4;
 	lat: number = 39.195013;
   	lng: number = -100.258499;
 
