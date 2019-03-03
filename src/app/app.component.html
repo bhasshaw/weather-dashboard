@@ -68,3 +68,9 @@
 		</div>
 	</div>
 </div>
+
+<div class="text-center mt-4" *ngIf="data">
+	<h2>Location</h2>
+	<h4>Latitude: {{data.station.lat}}</h4>
+	<h4>Longitude: {{data.station.lng}}</h4>
+</div>
