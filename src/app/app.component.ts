@@ -17,6 +17,8 @@ export class AppComponent implements OnInit {
 	}
 	currentState: number;
 	errorMessage: any;
+	lat: number = 39.195013;
+  	lng: number = -100.258499;
 
 	constructor(private http: HttpClient) {
 		this.currentState = this.states.LOADING;
