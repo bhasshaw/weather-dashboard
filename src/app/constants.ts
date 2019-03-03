@@ -1,4 +1,4 @@
 export const Constants = {
-	name: 'Your Name',
-	email: 'email@address.com'
+	name: 'Bryce',
+	email: 'bhasshaw@gmail.com'
 }

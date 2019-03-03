@@ -5,13 +5,16 @@
 <div *ngIf="currentState == states.ERROR">
 	ERROR {{errorMessage | json}}
 </div>
-
+<app-nav></app-nav>
 <div *ngIf="currentState == states.READY">
 	<div *ngIf="data">
 		<h2>{{data.station.name}}</h2>
 	</div>
 	<div *ngIf="currentConditionMap['Temperature']">
 		{{currentConditionMap['Temperature'].reading | json}} °F
+	</div>
+	<div *ngIf="currentConditionMap['Wind Speed']">
+		{{currentConditionMap['Wind Speed'].reading | json}} MPH
 	</div>
 </div>
 
