@@ -5,17 +5,55 @@
 <div *ngIf="currentState == states.ERROR">
 	ERROR {{errorMessage | json}}
 </div>
+
 <app-nav></app-nav>
-<div *ngIf="currentState == states.READY">
+
+<div class="text-center mt-4" *ngIf="data">
+		<h2>{{data.station.name}}</h2>
+</div>
+
+<div class="container mt-4" *ngIf="currentState == states.READY">
+	<div class="card-deck text-center">
+		<div class="card border">
+			<div class="card-header">
+				<h4>Temperature</h4>
+			</div>
+			<div class="my-auto" *ngIf="currentConditionMap['Temperature']">
+				<h1>{{currentConditionMap['Temperature'].reading | json}} °F</h1>
+			</div>
+		</div>
+		<div class="card border">
+			<div class="card-header">
+				<h4>Humidity</h4>
+			</div>
+			<div class="my-auto" *ngIf="currentConditionMap['Humidity']">
+				<h1>{{currentConditionMap['Humidity'].reading | json}} %</h1>
+			</div>
+		</div>
+		<div class="card border">
+			<div class="card-header">
+				<h4>Wind Speed</h4>
+			</div>
+			<div class="my-auto" *ngIf="currentConditionMap['Wind Speed']">
+				<h1>{{currentConditionMap['Wind Speed'].reading | json}} MPH</h1>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- <div *ngIf="currentState == states.READY">
 	<div *ngIf="data">
 		<h2>{{data.station.name}}</h2>
 	</div>
 	<div *ngIf="currentConditionMap['Temperature']">
 		{{currentConditionMap['Temperature'].reading | json}} °F
 	</div>
+	<div *ngIf="currentConditionMap['Humidity']">
+		{{currentConditionMap['Humidity'].reading | json}} %
+	</div>
 	<div *ngIf="currentConditionMap['Wind Speed']">
 		{{currentConditionMap['Wind Speed'].reading | json}} MPH
 	</div>
-</div>
+</div> -->
 
 
